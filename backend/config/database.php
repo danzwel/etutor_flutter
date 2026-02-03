@@ -1,7 +1,7 @@
 <?php
 // Database Configuration
 $host = 'localhost';
-$dbname = 'etutor';
+$dbname = 'etutor_flutter';
 $username = 'root';
 $password = '';
 

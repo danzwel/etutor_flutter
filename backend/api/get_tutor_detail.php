@@ -34,9 +34,9 @@ try {
     
     // Process foto URL
     if (!empty($tutor['foto'])) {
-        $tutor['foto_url'] = 'http://192.168.1.27/etutor_flutter/images/' . $tutor['foto'];
+        $tutor['foto_url'] = 'http://192.168.1.27/etutor_flutter/assets/images/' . $tutor['foto'];
     } else {
-        $tutor['foto_url'] = 'http://192.168.1.27/etutor_flutter/images/default-avatar.jpg';
+        $tutor['foto_url'] = 'http://192.168.1.27/etutor_flutter/assets/images/default-avatar.jpg';
     }
     
     // Get reviews

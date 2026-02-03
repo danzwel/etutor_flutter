@@ -30,9 +30,9 @@ try {
     // Process foto URLs
     foreach ($bookings as &$booking) {
         if (!empty($booking['foto'])) {
-            $booking['tutor_foto_url'] = 'http://192.168.1.27/etutor_flutter/images/' . $booking['foto'];
+            $booking['tutor_foto_url'] = 'http://192.168.1.27/etutor_flutter/assets/images/' . $booking['foto'];
         } else {
-            $booking['tutor_foto_url'] = 'http://192.168.1.27/etutor_flutter/images/default-avatar.jpg';
+            $booking['tutor_foto_url'] = 'http://192.168.1.27/etutor_flutter/assets/images/default-avatar.jpg';
         }
         
         // Check if review exists
