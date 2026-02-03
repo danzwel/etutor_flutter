@@ -50,9 +50,9 @@ try {
     // Process foto URLs
     foreach ($tutors as &$tutor) {
         if (!empty($tutor['foto'])) {
-            $tutor['foto_url'] = 'http://YOUR_SERVER_IP/etutor/assets/images/' . $tutor['foto'];
+            $tutor['foto_url'] = 'http://192.168.1.27/etutor_flutter/images/' . $tutor['foto'];
         } else {
-            $tutor['foto_url'] = 'http://YOUR_SERVER_IP/etutor/assets/images/default-avatar.jpg';
+            $tutor['foto_url'] = 'http://192.168.1.27/etutor_flutter/images/default-avatar.jpg';
         }
     }
     

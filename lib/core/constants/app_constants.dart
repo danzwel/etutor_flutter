@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // API Configuration
 class ApiConfig {
   // GANTI dengan IP server Anda (localhost tidak akan berfungsi di emulator/device)
-  static const String baseUrl = 'http://192.168.1.100/etutor_flutter/backend/api';
+  static const String baseUrl = 'http://192.168.1.27/etutor_flutter/backend/api';
   
   // Endpoints
   static const String login = '$baseUrl/login.php';
