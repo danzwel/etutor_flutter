@@ -169,7 +169,7 @@ Klik tombol di atas untuk melihat video demo aplikasi ETutor Mobile yang menampi
 2. Paste ke: C:/xampp/htdocs/
 3. Rename folder menjadi: etutor_flutter
 
-Struktur akhir:
+ akhir:
 C:/xampp/htdocs/etutor_flutter/backend/
 ├── api/
 │   ├── login.php
@@ -365,7 +365,7 @@ Password: 1234567
 
 ---
 
-## 📁 Struktur Proyek
+## 📁 Struktur Proyek (Yang Tamplate tidak dimasukan)
 
 ```
 etutor_flutter/
