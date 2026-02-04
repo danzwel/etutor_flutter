@@ -201,7 +201,7 @@ C:/xampp/htdocs/etutor_flutter/backend/
 
 #### 1.5 Update IP di Backend API
 
-Buka semua file PHP di `backend/api/` dan ganti:
+Buka semua file PHP di `backend/api/` dan `lib/core/constants/app_cosntants.dart` ganti:
 ```php
 // Cari baris ini:
 $tutor['foto_url'] = 'http://YOUR_SERVER_IP/etutor/assets/images/' . $tutor['foto'];
