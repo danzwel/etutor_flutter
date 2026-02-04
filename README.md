@@ -8,7 +8,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
 **Tugas Besar Pemrograman Mobile 2**  
-*Universitas Teknologi Bandung - Departemen Bisnis Digital*
+*Universitas Teknologi Bandung - Departemen Teknik Informatika*
 
 </div>
 
@@ -571,7 +571,7 @@ mysqldump -u root etutor > backup.sql
 Nova Agustina, S.T., M.Kom.
 
 **Universitas Teknologi Bandung**  
-Departemen Bisnis Digital
+Departemen Teknik Informatika
 
 ---
 
