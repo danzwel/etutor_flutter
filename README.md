@@ -18,6 +18,7 @@
 
 - [Tentang Proyek](#-tentang-proyek)
 - [Fitur Utama](#-fitur-utama)
+- [Video Demo](#-video-demo)
 - [Teknologi](#-teknologi)
 - [Persyaratan Sistem](#-persyaratan-sistem)
 - [Instalasi](#-instalasi)
@@ -68,6 +69,20 @@
 - ✅ **Approve Tutors** - Verifikasi dan approve tutor baru
 - ✅ **Manage Users** - Kelola semua user (Admin, Tutor, Siswa)
 - ✅ **Reports** - Laporan revenue dan booking statistics
+
+---
+
+## 🎥 Video Demo
+
+**📹 Tonton video demo aplikasi lengkap:**
+
+[![Video Demo ETutor Mobile](https://img.shields.io/badge/▶️_Video_Demo-Google_Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/drive/folders/1XtW0iJQvml8n2d-GrtUlXBoz7mD-fSvT?usp=sharing)
+
+Klik tombol di atas untuk melihat video demo aplikasi ETutor Mobile yang menampilkan:
+- 🎬 Proses instalasi dan konfigurasi
+- 📱 Demo penggunaan untuk setiap role (Siswa, Tutor, Admin)
+- 🔄 Flow lengkap dari registrasi hingga booking
+- 🎨 Showcase UI/UX dan fitur-fitur utama
 
 ---
 
@@ -409,9 +424,15 @@ etutor_flutter/
 │   │
 │   └── main.dart                 # App entry point
 │
-├── assets/                       # Assets (jika ada)
-│   ├── images/
-│   └── icons/
+├── assets/                       # Assets
+│   └── images/
+│       └── uploads/              # Screenshots
+│           ├── Landing_Page.jpeg
+│           ├── Student_Dashboard.jpeg
+│           ├── Find_Tutor.jpeg
+│           ├── Tutor_Detail.jpeg
+│           ├── Booking_Screen.jpeg
+│           └── Admin_Dashboard.jpeg
 │
 ├── pubspec.yaml                  # Dependencies
 └── README.md                     # This file
@@ -421,26 +442,51 @@ etutor_flutter/
 
 ## 📸 Screenshots
 
-### Landing Page
-Halaman sambutan dengan fitur ETutor dan featured tutors.
+### 1. Landing Page
+<img src="assets/images/uploads/Landing_Page.jpeg" width="300" alt="Landing Page">
 
-### Student Dashboard
-Dashboard siswa dengan quick actions dan statistik.
-
-### Find Tutor
-Cari dan filter tutor berdasarkan berbagai kriteria.
-
-### Tutor Detail
-Profil lengkap tutor dengan rating dan reviews.
-
-### Booking Screen
-Form booking dengan perhitungan biaya otomatis.
-
-### Admin Dashboard
-Panel admin dengan statistics dan analytics.
+Halaman sambutan dengan fitur ETutor, featured tutors, dan informasi tim pengembang.
 
 ---
 
+### 2. Student Dashboard
+<img src="assets/images/uploads/Student_Dashboard.jpeg" width="300" alt="Student Dashboard">
+
+Dashboard siswa dengan quick actions, statistik booking, dan recommended tutors.
+
+---
+
+### 3. Find Tutor
+<img src="assets/images/uploads/Find_Tutor.jpeg" width="300" alt="Find Tutor">
+
+Cari dan filter tutor berdasarkan mata pelajaran, universitas, dan harga.
+
+---
+
+### 4. Tutor Detail
+<img src="assets/images/uploads/Tutor_Detail.jpeg" width="300" alt="Tutor Detail">
+
+Profil lengkap tutor dengan informasi pendidikan, mata pelajaran, rating, dan reviews.
+
+---
+
+### 5. Booking Screen
+<img src="assets/images/uploads/Booking_Screen.jpeg" width="300" alt="Booking Screen">
+
+Form booking dengan pilihan mata pelajaran, tanggal, jam, durasi, dan perhitungan biaya otomatis.
+
+---
+
+### 6. Admin Dashboard
+<img src="assets/images/uploads/Admin_Dashboard.jpeg" width="300" alt="Admin Dashboard">
+
+Panel admin dengan statistics lengkap (revenue, users, tutors, bookings) dan quick actions.
+
+---
+
+### Dan masih banyak lagi jika sudah instal.
+
+---
 ## 🛠️ Troubleshooting
 
 ### 1. Error: "IP not reachable"
