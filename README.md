@@ -156,9 +156,9 @@ Klik tombol di atas untuk melihat video demo aplikasi ETutor Mobile yang menampi
 ```bash
 1. Buka browser, akses http://localhost/phpmyadmin
 2. Klik "New" untuk create database baru
-3. Nama database: etutor
+3. Nama database: etutor_flutter
 4. Klik tab "Import"
-5. Choose file: etutor.sql (dari folder proyek web sebelumnya)
+5. Choose file: etutor_flutter.sql (dari folder proyek web sebelumnya)
 6. Klik "Go"
 ```
 
@@ -285,7 +285,7 @@ File: `backend/config/database.php`
 
 ```php
 $host = 'localhost';
-$dbname = 'etutor';
+$dbname = 'etutor_flutter';
 $username = 'root';
 $password = '';
 ```
