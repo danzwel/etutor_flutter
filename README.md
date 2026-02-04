@@ -8,7 +8,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
 **Tugas Besar Pemrograman Mobile 2**
-*Kelompok 7*  
+**Kelompok 7**  
 *Universitas Teknologi Bandung - Departemen Teknik Informatika*
 
 </div>
