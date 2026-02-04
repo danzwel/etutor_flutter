@@ -244,7 +244,12 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Booking Saya'),
-        elevation: 2,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: AppColors.primaryGradient,
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),

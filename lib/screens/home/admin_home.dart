@@ -18,8 +18,23 @@ class AdminHome extends StatefulWidget {
 }
 
 class _AdminHomeState extends State<AdminHome> {
-  Widget _currentScreen = const AdminDashboard();
-  String _currentTitle = 'Dashboard';
+  int _currentIndex = 0;
+  
+  final List<Widget> _screens = [
+    const AdminDashboard(),
+    const ManageTutorsScreen(),
+    const ManageUsersScreen(),
+    const ReportsScreen(),
+    const AboutScreen(),
+  ];
+  
+  final List<String> _titles = [
+    'Dashboard',
+    'Kelola Tutor',
+    'Kelola Users',
+    'Laporan',
+    'Tentang',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +44,7 @@ class _AdminHomeState extends State<AdminHome> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_currentTitle),
+        title: Text(_titles[_currentIndex]),
         elevation: 2,
       ),
       drawer: Drawer(
@@ -104,65 +119,50 @@ class _AdminHomeState extends State<AdminHome> {
             ListTile(
               leading: const Icon(Icons.dashboard_outlined),
               title: const Text('Dashboard'),
-              selected: _currentTitle == 'Dashboard',
+              selected: _currentIndex == 0,
               selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
               onTap: () {
-                setState(() {
-                  _currentScreen = const AdminDashboard();
-                  _currentTitle = 'Dashboard';
-                });
+                setState(() => _currentIndex = 0);
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.school_outlined),
               title: const Text('Kelola Tutor'),
-              selected: _currentTitle == 'Kelola Tutor',
+              selected: _currentIndex == 1,
               selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
               onTap: () {
-                setState(() {
-                  _currentScreen = const ManageTutorsScreen();
-                  _currentTitle = 'Kelola Tutor';
-                });
+                setState(() => _currentIndex = 1);
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.people_outlined),
               title: const Text('Kelola Users'),
-              selected: _currentTitle == 'Kelola Users',
+              selected: _currentIndex == 2,
               selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
               onTap: () {
-                setState(() {
-                  _currentScreen = const ManageUsersScreen();
-                  _currentTitle = 'Kelola Users';
-                });
+                setState(() => _currentIndex = 2);
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.assessment_outlined),
               title: const Text('Laporan'),
-              selected: _currentTitle == 'Laporan',
+              selected: _currentIndex == 3,
               selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
               onTap: () {
-                setState(() {
-                  _currentScreen = const ReportsScreen();
-                  _currentTitle = 'Laporan';
-                });
+                setState(() => _currentIndex = 3);
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.info_outline),
               title: const Text('Tentang'),
-              selected: _currentTitle == 'Tentang',
+              selected: _currentIndex == 4,
               selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
               onTap: () {
-                setState(() {
-                  _currentScreen = const AboutScreen();
-                  _currentTitle = 'Tentang';
-                });
+                setState(() => _currentIndex = 4);
                 Navigator.pop(context);
               },
             ),
@@ -206,7 +206,43 @@ class _AdminHomeState extends State<AdminHome> {
           ],
         ),
       ),
-      body: _currentScreen,
+      body: _screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) => setState(() => _currentIndex = index),
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.primaryColor,
+        unselectedItemColor: AppColors.textLight,
+        selectedFontSize: 11,
+        unselectedFontSize: 11,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: 'Beranda',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school_outlined),
+            activeIcon: Icon(Icons.school),
+            label: 'Tutor',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people_outlined),
+            activeIcon: Icon(Icons.people),
+            label: 'Users',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assessment_outlined),
+            activeIcon: Icon(Icons.assessment),
+            label: 'Laporan',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info_outline),
+            activeIcon: Icon(Icons.info),
+            label: 'Tentang',
+          ),
+        ],
+      ),
     );
   }
 }

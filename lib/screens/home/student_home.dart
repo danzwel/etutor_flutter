@@ -11,16 +11,8 @@ import '../student/find_tutor_screen.dart';
 import '../student/my_bookings_screen.dart';
 import '../about/about_screen.dart';
 
-class StudentHome extends StatefulWidget {
+class StudentHome extends StatelessWidget {
   const StudentHome({super.key});
-
-  @override
-  State<StudentHome> createState() => _StudentHomeState();
-}
-
-class _StudentHomeState extends State<StudentHome> {
-  Widget _currentScreen = const StudentDashboard();
-  String _currentTitle = 'Dashboard';
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +22,13 @@ class _StudentHomeState extends State<StudentHome> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_currentTitle),
-        elevation: 2,
+        title: const Text('Dashboard'),
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: AppColors.primaryGradient,
+          ),
+        ),
       ),
       drawer: Drawer(
         child: Column(
@@ -102,56 +99,42 @@ class _StudentHomeState extends State<StudentHome> {
             ),
 
             // Menu Items
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'MENU',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textLight,
+                  ),
+                ),
+              ),
+            ),
             ListTile(
-              leading: const Icon(Icons.dashboard_outlined),
-              title: const Text('Dashboard'),
-              selected: _currentTitle == 'Dashboard',
-              selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
+              leading: const Icon(Icons.person_outline),
+              title: const Text('Profile'),
               onTap: () {
-                setState(() {
-                  _currentScreen = const StudentDashboard();
-                  _currentTitle = 'Dashboard';
-                });
                 Navigator.pop(context);
+                // Tambahkan navigasi ke profile screen jika ada
               },
             ),
             ListTile(
-              leading: const Icon(Icons.search),
-              title: const Text('Cari Tutor'),
-              selected: _currentTitle == 'Cari Tutor',
-              selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
+              leading: const Icon(Icons.settings_outlined),
+              title: const Text('Pengaturan'),
               onTap: () {
-                setState(() {
-                  _currentScreen = const FindTutorScreen();
-                  _currentTitle = 'Cari Tutor';
-                });
                 Navigator.pop(context);
+                // Tambahkan navigasi ke settings screen jika ada
               },
             ),
             ListTile(
-              leading: const Icon(Icons.book_outlined),
-              title: const Text('Booking Saya'),
-              selected: _currentTitle == 'Booking Saya',
-              selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
+              leading: const Icon(Icons.help_outline),
+              title: const Text('Bantuan'),
               onTap: () {
-                setState(() {
-                  _currentScreen = const MyBookingsScreen();
-                  _currentTitle = 'Booking Saya';
-                });
                 Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.info_outline),
-              title: const Text('Tentang'),
-              selected: _currentTitle == 'Tentang',
-              selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
-              onTap: () {
-                setState(() {
-                  _currentScreen = const AboutScreen();
-                  _currentTitle = 'Tentang';
-                });
-                Navigator.pop(context);
+                // Tambahkan navigasi ke help screen jika ada
               },
             ),
             const Divider(),
@@ -194,7 +177,7 @@ class _StudentHomeState extends State<StudentHome> {
           ],
         ),
       ),
-      body: _currentScreen,
+      body: const StudentDashboard(),
     );
   }
 }

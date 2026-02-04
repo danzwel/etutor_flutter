@@ -97,7 +97,12 @@ class _FindTutorScreenState extends State<FindTutorScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cari Tutor'),
-        elevation: 2,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: AppColors.primaryGradient,
+          ),
+        ),
       ),
       body: Column(
         children: [

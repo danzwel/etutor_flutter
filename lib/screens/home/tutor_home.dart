@@ -15,8 +15,19 @@ class TutorHome extends StatefulWidget {
 }
 
 class _TutorHomeState extends State<TutorHome> {
-  Widget _currentScreen = const TutorDashboard();
-  String _currentTitle = 'Dashboard';
+  int _currentIndex = 0;
+  
+  final List<Widget> _screens = [
+    const TutorDashboard(),
+    const TutorBookingsScreen(),
+    const AboutScreen(),
+  ];
+  
+  final List<String> _titles = [
+    'Dashboard',
+    'Booking Masuk',
+    'Tentang',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +37,7 @@ class _TutorHomeState extends State<TutorHome> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_currentTitle),
+        title: Text(_titles[_currentIndex]),
         elevation: 2,
       ),
       drawer: Drawer(
@@ -101,33 +112,30 @@ class _TutorHomeState extends State<TutorHome> {
             ListTile(
               leading: const Icon(Icons.dashboard_outlined),
               title: const Text('Dashboard'),
+              selected: _currentIndex == 0,
+              selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
               onTap: () {
-                setState(() {
-                  _currentScreen = const TutorDashboard();
-                  _currentTitle = 'Dashboard';
-                });
+                setState(() => _currentIndex = 0);
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.book_outlined),
               title: const Text('Booking Masuk'),
+              selected: _currentIndex == 1,
+              selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
               onTap: () {
-                setState(() {
-                  _currentScreen = const TutorBookingsScreen();
-                  _currentTitle = 'Booking Masuk';
-                });
+                setState(() => _currentIndex = 1);
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.info_outline),
               title: const Text('Tentang'),
+              selected: _currentIndex == 2,
+              selectedTileColor: AppColors.primaryColor.withOpacity(0.1),
               onTap: () {
-                setState(() {
-                  _currentScreen = const AboutScreen();
-                  _currentTitle = 'Tentang Aplikasi';
-                });
+                setState(() => _currentIndex = 2);
                 Navigator.pop(context);
               },
             ),
@@ -171,7 +179,33 @@ class _TutorHomeState extends State<TutorHome> {
           ],
         ),
       ),
-      body: _currentScreen,
+      body: _screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) => setState(() => _currentIndex = index),
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.primaryColor,
+        unselectedItemColor: AppColors.textLight,
+        selectedFontSize: 12,
+        unselectedFontSize: 12,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: 'Beranda',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book_outlined),
+            activeIcon: Icon(Icons.book),
+            label: 'Booking',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info_outline),
+            activeIcon: Icon(Icons.info),
+            label: 'Tentang',
+          ),
+        ],
+      ),
     );
   }
 }
