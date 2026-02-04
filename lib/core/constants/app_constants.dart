@@ -15,6 +15,13 @@ class ApiConfig {
   static const String getTutorBookings = '$baseUrl/get_tutor_bookings.php';
   static const String updateBookingStatus = '$baseUrl/update_booking_status.php';
   static const String submitReview = '$baseUrl/submit_review.php';
+  
+  // Admin endpoints
+  static const String getStatistics = '$baseUrl/get_statistics.php';
+  static const String getAllTutors = '$baseUrl/get_all_tutors.php';
+  static const String updateTutorStatus = '$baseUrl/update_tutor_status.php';
+  static const String getAllUsers = '$baseUrl/get_all_users.php';
+  static const String updateTutorProfile = '$baseUrl/update_tutor_profile.php';
 }
 
 // App Colors - Sama dengan web version

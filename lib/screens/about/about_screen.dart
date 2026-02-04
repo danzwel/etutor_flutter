@@ -181,7 +181,7 @@ class AboutScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     const Text(
-                      'Departemen Bisnis Digital',
+                      'Departemen Teknik Informatika',
                       style: AppTextStyles.bodyMedium,
                     ),
                   ],

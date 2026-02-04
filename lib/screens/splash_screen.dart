@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../core/constants/app_constants.dart';
 import '../providers/auth_provider.dart';
-import 'auth/login_screen.dart';
+import 'landing/landing_screen.dart';
 import 'home/main_navigation.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       MaterialPageRoute(
         builder: (_) => authProvider.isLoggedIn 
             ? const MainNavigation() 
-            : const LoginScreen(),
+            : const LandingScreen(),
       ),
     );
   }

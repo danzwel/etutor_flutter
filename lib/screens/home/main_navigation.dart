@@ -4,6 +4,7 @@ import '../../core/constants/app_constants.dart';
 import '../../providers/auth_provider.dart';
 import 'student_home.dart';
 import 'tutor_home.dart';
+import 'admin_home.dart';
 import '../student/find_tutor_screen.dart';
 import '../student/my_bookings_screen.dart';
 import '../about/about_screen.dart';
@@ -22,6 +23,11 @@ class _MainNavigationState extends State<MainNavigation> {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
     final userRole = authProvider.userRole;
+
+    // For Admin: Use Admin Panel
+    if (userRole == 'admin') {
+      return const AdminHome();
+    }
 
     // For Tutor: Use Drawer
     if (userRole == 'tutor') {

@@ -191,4 +191,121 @@ class ApiService {
       };
     }
   }
+
+  // ─── Admin APIs ───
+
+  // Get Statistics (Dashboard + Reports)
+  static Future<Map<String, dynamic>> getStatistics() async {
+    try {
+      final response = await http.get(Uri.parse(ApiConfig.getStatistics));
+      return json.decode(response.body);
+    } catch (e) {
+      return {
+        'success': false,
+        'message': 'Terjadi kesalahan: ${e.toString()}'
+      };
+    }
+  }
+
+  // Get All Tutors (untuk admin kelola tutor)
+  static Future<Map<String, dynamic>> getAllTutors({String? status}) async {
+    try {
+      String url = ApiConfig.getAllTutors;
+      if (status != null && status.isNotEmpty) {
+        url += '?status=$status';
+      }
+      final response = await http.get(Uri.parse(url));
+      return json.decode(response.body);
+    } catch (e) {
+      return {
+        'success': false,
+        'message': 'Terjadi kesalahan: ${e.toString()}'
+      };
+    }
+  }
+
+  // Update Tutor Status (approve / reject)
+  static Future<Map<String, dynamic>> updateTutorStatus(
+    int tutorId,
+    String status,
+  ) async {
+    try {
+      final response = await http.post(
+        Uri.parse(ApiConfig.updateTutorStatus),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'tutor_id': tutorId,
+          'status': status,
+        }),
+      );
+      return json.decode(response.body);
+    } catch (e) {
+      return {
+        'success': false,
+        'message': 'Terjadi kesalahan: ${e.toString()}'
+      };
+    }
+  }
+
+  // Get All Users (untuk admin kelola users)
+  static Future<Map<String, dynamic>> getAllUsers({String? role}) async {
+    try {
+      String url = ApiConfig.getAllUsers;
+      if (role != null && role.isNotEmpty) {
+        url += '?role=$role';
+      }
+      final response = await http.get(Uri.parse(url));
+      return json.decode(response.body);
+    } catch (e) {
+      return {
+        'success': false,
+        'message': 'Terjadi kesalahan: ${e.toString()}'
+      };
+    }
+  }
+
+  // Update Tutor Profile
+  static Future<Map<String, dynamic>> updateTutorProfile(
+    Map<String, dynamic> data,
+  ) async {
+    try {
+      final response = await http.post(
+        Uri.parse(ApiConfig.updateTutorProfile),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode(data),
+      );
+      return json.decode(response.body);
+    } catch (e) {
+      return {
+        'success': false,
+        'message': 'Terjadi kesalahan: ${e.toString()}'
+      };
+    }
+  }
+  // Delete User
+  static Future<Map<String, dynamic>> deleteUser(int userId) async {
+    try {
+      final response = await http.post(
+        Uri.parse("${ApiConfig.baseUrl}/delete_user.php"),
+        headers: {"Content-Type": "application/json"},
+        body: json.encode({"user_id": userId}),
+      );
+      return json.decode(response.body);
+    } catch (e) {
+      return {"success": false, "message": "Terjadi kesalahan: ${e.toString()}"};
+    }
+  }
+
+  // Get User Detail
+  static Future<Map<String, dynamic>> getUserDetail(int userId) async {
+    try {
+      final response = await http.get(
+        Uri.parse("${ApiConfig.baseUrl}/get_user_detail.php?user_id=$userId"),
+      );
+      return json.decode(response.body);
+    } catch (e) {
+      return {"success": false, "message": "Terjadi kesalahan: ${e.toString()}"};
+    }
+  }
+
 }
