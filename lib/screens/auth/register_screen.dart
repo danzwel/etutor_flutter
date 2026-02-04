@@ -19,6 +19,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _sekolahController = TextEditingController();
   final _kelasController = TextEditingController();
   
+  // Tutor fields
+  final _universitasController = TextEditingController();
+  final _semesterController = TextEditingController();
+  final _jurusanController = TextEditingController();
+  final _mataPelajaranController = TextEditingController();
+  final _hargaPerJamController = TextEditingController();
+  
   String _selectedRole = 'siswa';
   bool _obscurePassword = true;
 
@@ -30,6 +37,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _namaLengkapController.dispose();
     _sekolahController.dispose();
     _kelasController.dispose();
+    _universitasController.dispose();
+    _semesterController.dispose();
+    _jurusanController.dispose();
+    _mataPelajaranController.dispose();
+    _hargaPerJamController.dispose();
     super.dispose();
   }
 
@@ -49,6 +61,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (_selectedRole == 'siswa') {
       data['sekolah'] = _sekolahController.text.trim();
       data['kelas'] = _kelasController.text.trim();
+    } else if (_selectedRole == 'tutor') {
+      data['universitas'] = _universitasController.text.trim();
+      data['semester'] = _semesterController.text.trim();
+      data['jurusan'] = _jurusanController.text.trim();
+      data['mata_pelajaran'] = _mataPelajaranController.text.trim();
+      data['harga_per_jam'] = _hargaPerJamController.text.trim();
     }
 
     final success = await authProvider.register(data);
@@ -258,6 +276,118 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     decoration: const InputDecoration(
                       labelText: 'Kelas',
                       prefixIcon: Icon(Icons.class_outlined),
+                    ),
+                  ),
+                ],
+
+                // Conditional fields for Tutor
+                if (_selectedRole == 'tutor') ...[
+                  TextFormField(
+                    controller: _universitasController,
+                    decoration: const InputDecoration(
+                      labelText: 'Universitas',
+                      prefixIcon: Icon(Icons.school_outlined),
+                      hintText: 'Contoh: Universitas Indonesia',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Universitas tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _semesterController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      labelText: 'Semester',
+                      prefixIcon: Icon(Icons.calendar_today_outlined),
+                      hintText: 'Contoh: 5',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Semester tidak boleh kosong';
+                      }
+                      final semester = int.tryParse(value.trim());
+                      if (semester == null || semester < 1 || semester > 14) {
+                        return 'Semester harus antara 1-14';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _jurusanController,
+                    decoration: const InputDecoration(
+                      labelText: 'Jurusan',
+                      prefixIcon: Icon(Icons.book_outlined),
+                      hintText: 'Contoh: Teknik Informatika',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Jurusan tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _mataPelajaranController,
+                    decoration: const InputDecoration(
+                      labelText: 'Mata Pelajaran yang Diajarkan',
+                      prefixIcon: Icon(Icons.menu_book_outlined),
+                      hintText: 'Contoh: Matematika, Fisika, Kimia',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Mata pelajaran tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _hargaPerJamController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      labelText: 'Harga per Jam (Rp)',
+                      prefixIcon: Icon(Icons.attach_money_outlined),
+                      hintText: 'Contoh: 75000',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Harga per jam tidak boleh kosong';
+                      }
+                      final harga = int.tryParse(value.trim());
+                      if (harga == null || harga < 10000) {
+                        return 'Harga minimal Rp 10.000';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: AppColors.infoColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: AppColors.infoColor.withOpacity(0.3)),
+                    ),
+                    child: Row(
+                      children: const [
+                        Icon(Icons.info_outline, size: 20, color: AppColors.infoColor),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            'Foto profil dapat diupload nanti setelah akun disetujui oleh admin',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: AppColors.textDark,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
